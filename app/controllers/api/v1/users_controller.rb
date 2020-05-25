@@ -19,20 +19,24 @@ class Api::V1::UsersController < ApplicationController
       #query user_games for top scores per game type
       #scores per user 
       #times
+
     end    
 
     def newgame        
         foundGame =  Game.all[0]#Game.find(params["user"]["game_type"])
-        game = UserGames.create(user_id: @user.id, game_id: foundGame.id)        
+        user_game = UserGames.create(user_id: @user.id, game_id: foundGame.id)        
         tiles = Tile.where(game_id: foundGame.id)
-        render json: { created_game: game, tiles: tiles}, status: :accepted
+        render json: { created_UserGame: user_game, tiles: tiles}, status: :accepted
     end
 
     def updategame
-      #patch to user game
+      byebug
+      foundUserGame =  UserGames.find(params["user"]["user_game"]["id"])
+      foundUserGame.update(score: params["user"]["user_game"]["score"], time: params["user"]["user_game"]["time"])
+      render json: { updated_UserGame: foundUserGame}, status: :accepted
     end
 
-    def create   
+    def create        
       @user = User.create(user_params)
       if @user.valid?
         @token = encode_token({ user_id: @user.id })
