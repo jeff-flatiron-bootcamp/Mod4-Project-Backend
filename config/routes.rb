@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get '/games', to: 'users#games'   
       post '/newgame', to: 'users#newgame'
       get '/user_games', to: 'users#user_games'
+      get '/high_scores', to: 'users#high_scores'
+      patch '/updategame', to: 'users#updategame'
     end
   end
 end

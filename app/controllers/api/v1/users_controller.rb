@@ -15,6 +15,12 @@ class Api::V1::UsersController < ApplicationController
         render json: { user_games: user_games}, status: :accepted
     end
    
+    def high_scores
+      #query user_games for top scores per game type
+      #scores per user 
+      #times
+    end    
+
     def newgame        
         foundGame =  Game.all[0]#Game.find(params["user"]["game_type"])
         game = UserGames.create(user_id: @user.id, game_id: foundGame.id)        
@@ -23,7 +29,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def updategame
-
+      #patch to user game
     end
 
     def create        
