@@ -18,10 +18,8 @@ class Api::V1::UsersController < ApplicationController
     def high_scores      
       
       temp = UserGames.all
-      easy_5 = temp.select{|record| record.game.difficulty == "Easy"}.sort_by{|item| -item['score']}.take(5)      
-      byebug
+      easy_5 = temp.select{|record| record.game.difficulty == "Easy"}.sort_by{|item| -item['score']}.take(5)            
       easy_5 = easy_5.map{|item| ret = { user_game: item, user: {username: item.user.username }}}      
-      #easy_5 = easy_5.map{|item| ret = { gameresult: item, user: {username: item.user.username }}}      
       medium_5 = temp.select{|record| record.game.difficulty == "Medium"}.sort_by{|item| -item['score']}.take(5)
       medium_5 = medium_5.map{|item| ret = { user_game: item, user: {username: item.user.username }}}
       hard_5 = temp.select{|record| record.game.difficulty == "Hard"}.sort_by{|item| -item['score']}.take(5)
@@ -38,7 +36,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def updategame
-      byebug
+      
       foundUserGame =  UserGames.find(params["user"]["user_game"]["id"])
       foundUserGame.update(score: params["user"]["user_game"]["score"], time: params["user"]["user_game"]["time"])
       render json: { updated_UserGame: foundUserGame}, status: :accepted
