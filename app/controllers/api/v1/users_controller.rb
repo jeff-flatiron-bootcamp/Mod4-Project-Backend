@@ -15,11 +15,19 @@ class Api::V1::UsersController < ApplicationController
         render json: { user_games: user_games}, status: :accepted
     end
    
-    def high_scores
-      #query user_games for top scores per game type
-      #scores per user 
-      #times
-
+    def high_scores      
+      
+      temp = UserGames.all
+      easy_5 = temp.select{|record| record.game.difficulty == "Easy"}.sort_by{|item| -item['score']}.take(5)      
+      byebug
+      easy_5 = easy_5.map{|item| ret = { user_game: item, user: {username: item.user.username }}}      
+      #easy_5 = easy_5.map{|item| ret = { gameresult: item, user: {username: item.user.username }}}      
+      medium_5 = temp.select{|record| record.game.difficulty == "Medium"}.sort_by{|item| -item['score']}.take(5)
+      medium_5 = medium_5.map{|item| ret = { user_game: item, user: {username: item.user.username }}}
+      hard_5 = temp.select{|record| record.game.difficulty == "Hard"}.sort_by{|item| -item['score']}.take(5)
+      hard_5 = hard_5.map{|item| ret = { user_game: item, user: {username: item.user.username }}}
+      high_scores = {easy_5: easy_5, medium_5: medium_5, hard_5: hard_5}
+      render json: { high_scores: high_scores}, status: :accepted
     end    
 
     def newgame        

@@ -8,18 +8,20 @@
 
 UserGames.delete_all
 User.delete_all
-Game.delete_all
-
 Tile.delete_all
+Game.delete_all
 
 avatar = "https://upload.wikimedia.org/wikipedia/commons/4/49/Syvia_of_Sylvia%27s_reaturant_N.Y.C_%28cropped%29.jpg"
 
 userA = User.create(username: 'alpha', password_digest: User.digest('foobar'), country: 'usa', avatar: avatar )
 userB = User.create(username: 'beta', password_digest: User.digest('foobar'), country: 'italy', avatar: avatar )
+userC = User.create(username: 'gamma', password_digest: User.digest('foobar'), country: 'russia', avatar: avatar )
+userD = User.create(username: 'epsilon', password_digest: User.digest('foobar'), country: 'canada', avatar: avatar )
 
-game1 = Game.create(difficulty: "1")
-game2 = Game.create(difficulty: "2")
-game3 = Game.create(difficulty: "3")
+game1 = Game.create(difficulty: "Easy")
+game2 = Game.create(difficulty: "Medium")
+game3 = Game.create(difficulty: "Hard")
+
 tile1_img = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/php-logo_1.png"
 tile2_img = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/css3-logo.png"
 tile3_img = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/html5-logo.png"
@@ -43,13 +45,44 @@ tile11 = Tile.create(game_id: game3.id, url: tile4_img)
 tile12 = Tile.create(game_id: game3.id, url: tile5_img)
 tile13 = Tile.create(game_id: game3.id, url: tile6_img)
 
-UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game1.id)
-UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game1.id)
-UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game2.id)
-UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game2.id)
-UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game1.id)
-UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game3.id)
-UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game3.id)
+UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
+UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
 
+UserGames.create(user_id: userC.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userC.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userC.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userC.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userC.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
+UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
+
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
+
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
+
+UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userD.authenticate('foobar').id, game_id: game2.id, score: rand(1..45))
+UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game1.id, score: rand(1..60))
+UserGames.create(user_id: userB.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
+UserGames.create(user_id: userA.authenticate('foobar').id, game_id: game3.id, score: rand(1..30))
 
 puts "Seed Complete!"
