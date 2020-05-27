@@ -30,7 +30,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def updategame
-      byebug
+      # byebug
       foundUserGame =  UserGames.find(params["user"]["user_game"]["id"])
       foundUserGame.update(score: params["user"]["user_game"]["score"], time: params["user"]["user_game"]["time"])
       render json: { updated_UserGame: foundUserGame}, status: :accepted
