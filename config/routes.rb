@@ -11,7 +11,9 @@ Rails.application.routes.draw do
       post '/newgame', to: 'users#newgame'
       get '/user_games', to: 'users#user_games'
       get '/high_scores', to: 'users#high_scores'
+      get '/user_high_scores', to: 'users#user_high_scores'
       patch '/updategame', to: 'users#updategame'
+      patch '/updateuser', to: 'users#updateuser'
     end
   end
 end
