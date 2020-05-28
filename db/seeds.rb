@@ -13,10 +13,10 @@ Game.delete_all
 
 avatar = "https://upload.wikimedia.org/wikipedia/commons/4/49/Syvia_of_Sylvia%27s_reaturant_N.Y.C_%28cropped%29.jpg"
 
-userA = User.create(username: 'alpha', password_digest: User.digest('foobar'), country: 'usa', avatar: avatar )
-userB = User.create(username: 'beta', password_digest: User.digest('foobar'), country: 'italy', avatar: avatar )
-userC = User.create(username: 'gamma', password_digest: User.digest('foobar'), country: 'russia', avatar: avatar )
-userD = User.create(username: 'epsilon', password_digest: User.digest('foobar'), country: 'canada', avatar: avatar )
+userA = User.create(username: 'alpha', password_digest: User.digest('foobar'), country: 'US', avatar: avatar )
+userB = User.create(username: 'beta', password_digest: User.digest('foobar'), country: 'IT', avatar: avatar )
+userC = User.create(username: 'gamma', password_digest: User.digest('foobar'), country: 'RU', avatar: avatar )
+userD = User.create(username: 'epsilon', password_digest: User.digest('foobar'), country: 'CA', avatar: avatar )
 
 game1 = Game.create(difficulty: "Easy")
 game2 = Game.create(difficulty: "Medium")
