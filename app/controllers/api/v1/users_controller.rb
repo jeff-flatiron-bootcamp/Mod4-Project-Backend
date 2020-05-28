@@ -51,6 +51,11 @@ class Api::V1::UsersController < ApplicationController
       render json: { updated_UserGame: foundUserGame}, status: :accepted
     end
 
+    def updateuser
+      founduser=User.find_by(username: params["user"]["username"])
+      byebug
+    end
+
     def create        
       @user = User.create(user_params)
       if @user.valid?

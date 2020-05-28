@@ -1,3 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
-    attributes :username, :country   
+    attributes :username, :country, :avatar
+ 
   end
