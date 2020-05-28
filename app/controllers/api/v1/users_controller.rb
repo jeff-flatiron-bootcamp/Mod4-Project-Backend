@@ -30,9 +30,9 @@ class Api::V1::UsersController < ApplicationController
 
     def user_high_scores
       temp = @user.user_games
-      easy = temp.select{|record| record.game.difficulty == "Easy" && record.score !=nil}.max_by{|item| item['score']}    
-      medium = temp.select{|record| record.game.difficulty == "Medium"  && record.score !=nil}.max_by{|item| item['score']}
-      hard = temp.select{|record| record.game.difficulty == "Hard"  && record.score !=nil}.max_by{|item| item['score']}
+      easy = temp.select{|record| record.game.difficulty == "Easy" && record.score !=nil}.map{|record| record.score}    
+      medium = temp.select{|record| record.game.difficulty == "Medium"  && record.score !=nil}.map{|record| record.score}
+      hard = temp.select{|record| record.game.difficulty == "Hard"  && record.score !=nil}.map{|record| record.score}
       high_scores = {easy: easy, medium: medium, hard: hard}
       render json: { high_scores: high_scores}, status: :accepted
     end
