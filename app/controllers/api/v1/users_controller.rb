@@ -20,7 +20,7 @@ class Api::V1::UsersController < ApplicationController
       easy = temp.select{|record| record.game.difficulty == "Easy" && record.score !=nil}.map{|record| record.score}   
       medium = temp.select{|record| record.game.difficulty == "Medium"  && record.score !=nil}.map{|record| record.score} 
       hard = temp.select{|record| record.game.difficulty == "Hard"  && record.score !=nil}.map{|record| record.score} 
-      high_scores = {easy: easy, medium: medium, hard: hard}
+      high_scores = {easy: easy, medium: medium, hard: hard, all: temp.map{|record| record.score}}
         
       render json: { high_scores: high_scores}, status: :accepted
     end
